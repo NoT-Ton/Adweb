@@ -4,12 +4,13 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
 var Schema = require('mongoose').Schema
+
 const userSchema = Schema({
     username: String,
     password: String,
     name: String,
     surname: String,
-    gender: String
+    gender: String,
 }, {
     collection: 'users'
 })
@@ -43,6 +44,22 @@ const insertUser = (dataUser) => {
             }
         })
     })
+}
+
+const getUser = () => {
+  return new Promise ((resolve, reject) => {
+
+      User.find({},(err, data) => {
+          if(err){
+              reject(new Error('Cannot get users!'))
+          }else{
+            if(data){
+              resolve(data)
+            }
+              reject('Cannot get users!')
+          }
+      })
+  })
 }
 
 router.route('/signup')

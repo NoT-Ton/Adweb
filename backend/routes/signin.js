@@ -58,7 +58,6 @@ router.route('/signin')
             password: req.body.password,
         };
 
-
         console.log(playload);
 
         try{

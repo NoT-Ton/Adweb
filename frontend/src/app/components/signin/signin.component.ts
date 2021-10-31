@@ -40,7 +40,6 @@ export class SigninComponent implements OnInit {
   signup(){
     this.auth.signUp(this.authForm.value).subscribe(
       data => {
-
         if(data.status == true){
 
           this.router.navigate(['/products']);

@@ -13,6 +13,7 @@
                   <th>Quantity</th>
                   <th>Price</th>
                   <th>Image</th>
+                  <th></th>
               </tr>
           </thead>
           <tbody>
@@ -23,9 +24,32 @@
                   <td>{{item.detail}}</td>
                   <td>{{item.quantity}}</td>
                   <td>{{item.price}}</td>
-                  <td><img [src]="item.img" style="height:150px;"></td>
+                  <td><img [src]="item.img" style="height:100px;"></td>
+                  <td>
+                    <button type="button" class="btn btn-primary" (click)=onUpdate()>{{Edit ? 'hide' : 'Edit'}}</button>&nbsp;
+
+                    <button type="button" class="btn btn-danger" (click)=onDelete(item._id)>Delete</button>
+                  </td>
               </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <form [formGroup]="productForm">
+              <div class="card-body" *ngIf="Edit">
+                <div class="form-group">
+                  <label for="">name</label>
+                  <input type="text" class="form-control" formControlName="name">
+                  <label for="">detail</label>
+                    <input type="text" class="form-control" formControlName="detail">
+                    <label for="">quantity</label>
+                  <input type="text" class="form-control" formControlName="quantity">
+                  <label for="">price</label>
+                    <input type="text" class="form-control" formControlName="price">
+                </div>
+              </div>
+            </form>
+            </tr>
+          </tfoot>
       </table>
       </div>
     </div>

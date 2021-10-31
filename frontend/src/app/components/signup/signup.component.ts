@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
           alert('signup successful!')
 
           //navigate to products but go to signin
-          this.router.navigate(['/signin']);
+          this.router.navigate(['/products']);
         }
       },err => {
         console.log(err)
