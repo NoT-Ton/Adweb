@@ -12,6 +12,7 @@ export class ShowproductsComponent implements OnInit {
   Edit: boolean = false;
   products: any
   productForm = new FormGroup({
+
     name: new FormControl(''),
     detail: new FormControl(''),
     quantity: new FormControl(''),
@@ -19,7 +20,7 @@ export class ShowproductsComponent implements OnInit {
 
   })
 
-  constructor(private ps: ProductsService) { this.onLoading() }
+  constructor(private ps: ProductsService,private router: Router) { this.onLoading() }
 
   ngOnInit(): void {
   }
@@ -46,9 +47,27 @@ export class ShowproductsComponent implements OnInit {
     this.ps.deleteProduct(productID)
   }
 
-  onUpdate(){
-    //console.log(productID);
-    this.Edit = !this.Edit
-   
+  editProduct(productID: any){
+    console.log(productID);
+    //console.log(product);
+    console.log(this.productForm.value);
+    //this.product = productForm.id
+    this.ps.updateProduct(productID,this.productForm.value).subscribe(
+      data => {
+        console.log(data);
+        alert('Product updated successfully')
+        this.productForm.reset()
+      },
+      err =>{
+        console.log(err);
+      })
   }
+  onClick(){
+    this.Edit = !this.Edit
+
+  }
+  toEdit(){
+    //this.router.navigate(['/editproduct'])
+  }
+
 }

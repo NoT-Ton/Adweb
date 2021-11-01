@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-body">
+      <h4 class="card-title">Edit Product</h4>
+      <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-8">
+              <form [formGroup]="productForm">
+                  <div class="card" >
+                      <div class="card-header">
+                          Product Form
+                      </div>
+                      <div class="card-body" >
+
+
+                          <div class="row">
+                              <div class="col-md-3">
+                                  Product Name:
+                              </div>
+                              <div class="col-md-9">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" formControlName='name'>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-3">
+                                  Product Detail:
+                              </div>
+                              <div class="col-md-9">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control"  value="{{products.detail}}" formControlName='detail'>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-3">
+                                  Quantity:
+                              </div>
+                              <div class="col-md-9">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" value="{{products.quantity}}" formControlName='quantity'>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-3">
+                                  Price:
+                              </div>
+                              <div class="col-md-9">
+                                  <div class="form-group">
+                                    <input type="number" class="form-control" value="{{products.price}}"  formControlName='price'>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <button type="button" class="btn btn-primary" (click)="editProduct()">Save</button>&nbsp;
+                                  <button type="reset" class="btn btn-danger" (click)="resetForm()">Reset</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="col-md-8">
+
+          </div>
+      </div>
+  </div>
+</div>

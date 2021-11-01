@@ -12,6 +12,8 @@ import { ShowproductsComponent } from './components/showproducts/showproducts.co
 import { SigninComponent } from './components/signin/signin.component';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { SignupComponent } from './components/signup/signup.component';
+import { EditproductComponent } from './components/editproduct/editproduct.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SignupComponent } from './components/signup/signup.component';
     ProductsComponent,
     ShowproductsComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    EditproductComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

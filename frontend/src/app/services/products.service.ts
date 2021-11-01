@@ -3,10 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import {map } from 'rxjs/operators'
 import { Product } from '../product.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+
   products:any
 
   constructor(private http: HttpClient) { }
@@ -29,15 +31,24 @@ export class ProductsService {
     }))
   }
 
-  updateProduct(_id: String,name: String, detail: String, quantity: Number,price: Number){
-    const product: Product = {_id: _id,name: name, detail: detail, quantity: quantity, price: price}
-    return this.http.put<any>('http://localhost:3000/api/products/update/' + _id,product)
-    .subscribe(() => {
-      console.log('updated');
+  updateProduct(productID: String,product: any){
+    console.log(product);
 
-    })
+    return this.http.put<any>('http://localhost:3000/api/products/update/'+productID, product)
+    .pipe(map(data => {
+      return data
+    }))
   }
+/*
+  updateProduct(productID: String,product: any){
+    console.log(productID:;
 
+    return this.http.put<any>('http://localhost:3000/api/products/update', product)
+    .pipe(map(data => {
+      return data
+    }))
+  }
+*/
   deleteProduct(productID: String){
     return this.http.delete('http://localhost:3000/api/product/delete/' +productID)
     .subscribe(() => {
