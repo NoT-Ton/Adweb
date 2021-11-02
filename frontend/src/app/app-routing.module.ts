@@ -7,6 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import {ProductsComponent} from './components/products/products.component'
 import {EditproductComponent} from './components/editproduct/editproduct.component'
 import {MenuComponent} from './components/menu/menu.component'
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {path: 'addproduct', component: AddproductComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'profile', component: ProfileComponent},
   {path: '', redirectTo: 'products', pathMatch: 'full'}
 ];
 

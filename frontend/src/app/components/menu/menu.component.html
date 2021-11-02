@@ -15,6 +15,22 @@
         <a routerLink="addproduct" routerLinkActive="active" class="btn btn-dark">Add Product</a>
       </li>
     </ul>
+    <ul class="navbar-nav">
+      <a class="btn btn-outline-primary" role="button" routerLink="profile">
+        <i class="fa far fa-user" ></i>
+      </a>
+      &nbsp;&nbsp;
+      <li class="nav-item">
+        <a  routerLinkActive="active" class="btn btn-primary" routerLink="signin">Sign In</a>
+      </li>
+      <li class="nav-item">
+        <a  routerLinkActive="active" class="btn btn-dark">Sign Up</a>
+      </li>
+    </ul>
   </div>
 
 </nav>
+
+<div class="container-fluid" style="margin-top:60px">
+  <router-outlet></router-outlet>
+</div>

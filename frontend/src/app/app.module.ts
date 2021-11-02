@@ -14,6 +14,8 @@ import { AngularWebStorageModule } from 'angular-web-storage';
 import { SignupComponent } from './components/signup/signup.component';
 import { EditproductComponent } from './components/editproduct/editproduct.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChangecolorComponent } from './components/changecolor/changecolor.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MenuComponent } from './components/menu/menu.component';
     SigninComponent,
     SignupComponent,
     EditproductComponent,
-    MenuComponent
+    MenuComponent,
+    ProfileComponent,
+    ChangecolorComponent
   ],
   imports: [
     BrowserModule,
