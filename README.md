@@ -1,9 +1,10 @@
 backend: 
-npm install express mongoose jsonwebtoken bcryptjs nodemon
+  npm install express mongoose jsonwebtoken bcryptjs nodemon
 
 frontend: 
-npm install bootstrap jquery  popper.js
-npm install font-awesome --save
+  npm install bootstrap jquery  popper.js
+
+  npm install font-awesome --save
 
 "styles": [
               "src/styles.css",
