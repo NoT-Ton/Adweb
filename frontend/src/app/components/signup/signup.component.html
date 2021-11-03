@@ -16,10 +16,20 @@
                 <div class="form-group">
                   <label for="">Name</label>
                   <input type="text" class="form-control" formControlName="name">
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger" >
+                    <div *ngIf="name.errors?.required">
+                      name is required
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Surname</label>
                   <input type="text" class="form-control" formControlName="surname">
+                  <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="alert alert-danger" >
+                    <div *ngIf="surname.errors?.required">
+                      surname is required
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Gender</label>
@@ -38,23 +48,54 @@
                 </div>
                 <div class="form-group">
                   <label for="">Age</label>
-                  <input type="text" class="form-control" formControlName="age">
+                  <input type="number" class="form-control" formControlName="age">
+                  <div *ngIf="age.invalid && (age.dirty || age.touched)" class="alert alert-danger">
+                    <div *ngIf="age.errors?.required">
+                      age is required
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Email</label>
                   <input type="text" class="form-control" formControlName="email">
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors?.required">
+                        email is required.
+                    </div>
+                    <div *ngIf="email.errors?.email">
+                        Your email is incorrect!!
+                    </div>
+                </div>
                 </div>
                 <div class="form-group">
                   <label for="">Phone</label>
                   <input type="text" class="form-control" formControlName="phone">
+                  <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+                    <div *ngIf="phone.errors?.required">
+                      phone is required.
+                    </div>
+                    <div *ngIf="phone.errors?.pattern">
+                      Your phone is incorrect!!
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Username</label>
                   <input type="text" class="form-control" formControlName="username">
+                  <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                    <div *ngIf="username.errors?.required">
+                      username is required
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Password</label>
                   <input type="text" class="form-control" formControlName="password">
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors?.required">
+                      password is required
+                    </div>
+                  </div>
                 </div>
 
               </div>
