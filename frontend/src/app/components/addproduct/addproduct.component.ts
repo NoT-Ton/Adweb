@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms'
-
+import { FormControl, FormGroup, Validators, FormArray} from '@angular/forms'
+import { LocalStorageService } from 'angular-web-storage';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -25,38 +25,45 @@ export class AddproductComponent implements OnInit {
 
   previewLoaded: boolean = false
 
-  constructor(private ps: ProductsService) { }
+  get name() {return this.productForm.get('name') as FormArray;}
+  get detail() {return this.productForm.get('detail') as FormArray;}
+  get quantity() {return this.productForm.get('quantity') as FormArray;}
+  get price() {return this.productForm.get('price') as FormArray;}
+
+  constructor(private local: LocalStorageService, private ps: ProductsService) { }
+  token: any
 
   ngOnInit(): void {
   }
 
   addProduct(){
-    this.ps.addProduct(this.productForm.value).subscribe(
+    this.token = this.local.get('user').token
+    this.ps.addProduct(this.productForm.value,this.token).subscribe(
       data => {
-        console.log(data);
-        alert('Product added successfully')
-        this.productForm.reset()
+        console.log(data)
+        alert('Product added successfully');
+        this.productForm.reset();
       },
-      err =>{
+      err => {
         console.log(err);
-      })
+      }
+    );
+    window.location.reload();
   }
 
-
-  onChangeImg(e:any){
-    if(e.target.files.length > 0) {
-      const file = e.target.files[0]
-      const reader = new FileReader()
-        reader.readAsDataURL(file)
+  onChangeImg(e : any){
+    if (e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+        reader.readAsDataURL(file);
         reader.onload = () => {
-          this.previewLoaded = true
+          this.previewLoaded = true;
           this.productForm.patchValue({
             img: reader.result
           })
-        }
       }
     }
-
+  }
 
   resetForm(){
     this.productForm.reset()
