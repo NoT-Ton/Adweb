@@ -16,6 +16,9 @@ export class SignupComponent implements OnInit {
     gender: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
+    age: new FormControl(''),
+    email: new FormControl(''),
+    phone: new FormControl('')
   })
 
   constructor(private router: Router, private auth: AuthService) { }
