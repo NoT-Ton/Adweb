@@ -32,7 +32,7 @@ import { MenuComponent } from './components/menu/menu.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AngularWebStorageModule
+    AngularWebStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

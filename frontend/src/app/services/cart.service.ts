@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CartService {
-
+//hi
   counter: Number=0;
   sumPrice: Number=0;
   cart: ProductsService|any = []
