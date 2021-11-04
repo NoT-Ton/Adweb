@@ -8,6 +8,7 @@ import {ProductsComponent} from './components/products/products.component'
 import {EditproductComponent} from './components/editproduct/editproduct.component'
 import {MenuComponent} from './components/menu/menu.component'
 import { ProfileComponent } from './components/profile/profile.component';
+import {WishlistComponent} from './components/wishlist/wishlist.component'
 
 const routes: Routes = [
   {path: 'addproduct', component: AddproductComponent},
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: '', redirectTo: 'signin', pathMatch: 'full'}
+  {path: '', redirectTo: 'signin', pathMatch: 'full'},
+  {path: 'wishlist', component: WishlistComponent},
+  {path: '', redirectTo: 'products', pathMatch: 'full'}
 ];
 
 @NgModule({
