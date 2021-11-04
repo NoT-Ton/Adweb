@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
 import { FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router'
+import { WishlistService } from 'src/app/services/wishlist.service';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-wishlist',
@@ -9,9 +10,22 @@ import { Router } from '@angular/router'
   styleUrls: ['./wishlist.component.css']
 })
 export class WishlistComponent implements OnInit {
-  products: any
+    product : WishlistService|any ;
+    userid : any;
+    token : any
 
-  constructor(private ps: ProductsService,private router: Router) { }
+  constructor(private router: Router,private ws:WishlistService,public local: LocalStorageService) {
+      this.userid = this.local.get('user').result.id
+      this.token = this.local.get('user').token
+     this.ws.getWishlist(this.userid,this.token).subscribe(
+       data => {
+        this.product = data
+        console.log(data)
+       },err => {
+        console.log(err)
+       } )
+    }
+
 
   ngOnInit(): void {
   }
@@ -19,6 +33,7 @@ export class WishlistComponent implements OnInit {
   onDelete(productID: String){
     console.log(productID);
 
-    this.ps.deleteProduct(productID)
+    this.ws.deleteWishlist(productID)
+    window.location.reload();
   }
 }

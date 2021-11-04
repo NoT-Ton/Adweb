@@ -103,4 +103,20 @@ router.route('/add/:id')
         })
     });
 
+//Delete Wishlist by id
+router.delete("/delete/:wishlist_id", function(req, res) {
+  console.log('Deleted Wishlist');
+  Wishlist.findByIdAndDelete(req.params.wishlist_id)
+    .then(wishlist => {
+      if (wishlist) {
+        return res.status(200).json(`Wishlist deleted! Deleted wishlist details: ${wishlist}`);
+      } else {
+        return res.status(404).send("wishlist not found");
+      }
+    })
+    .catch(err => {
+      res.status(500).send(`Error details: ${err.message}`);
+    });
+});
+
 module.exports = router;
