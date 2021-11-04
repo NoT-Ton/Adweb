@@ -17,7 +17,7 @@ const productSchema = Schema({
 
     },*/
     file: String,
-    img: String
+    img: String,
 }, {
     collection: 'products'
 })
@@ -129,6 +129,7 @@ router.put("/products/update/:product_id", function(req, res) {
 
 //Delete Product by id
 router.delete("/product/delete/:product_id", function(req, res) {
+  console.log('Deleted');
   Product.findByIdAndDelete(req.params.product_id)
     .then(product => {
       if (product) {

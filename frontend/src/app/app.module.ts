@@ -16,6 +16,7 @@ import { EditproductComponent } from './components/editproduct/editproduct.compo
 import { MenuComponent } from './components/menu/menu.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChangecolorComponent } from './components/changecolor/changecolor.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ChangecolorComponent } from './components/changecolor/changecolor.compo
     EditproductComponent,
     MenuComponent,
     ProfileComponent,
-    ChangecolorComponent
+    ChangecolorComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
