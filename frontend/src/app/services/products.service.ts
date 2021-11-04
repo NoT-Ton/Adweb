@@ -31,6 +31,18 @@ export class ProductsService {
     }))
   }
 
+  getProduct2(token: any){
+    const headers = {'Authorization': token}
+    return this.http.get<any>('http://localhost:3000/api/products/get',{headers})
+    .pipe(map(data => {
+      if(data){
+        this.products = data
+        console.log(this.products);
+      }
+      return this.products
+    }))
+  }
+
   updateProduct(productID: String,product: any){
     console.log(product);
 

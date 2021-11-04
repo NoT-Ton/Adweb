@@ -1,6 +1,7 @@
 var express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const authorization = require('../config/authoriza')
 
 //models
 var Schema = require('mongoose').Schema
@@ -65,7 +66,7 @@ const getProduct = () => {
 
 
 router.route('/products/add')
-    .post((req, res) => {
+    .post(authorization,(req, res) => {
       console.log('add');
       addProduct(req.body)
         .then(result => {
@@ -79,7 +80,7 @@ router.route('/products/add')
     })
 
 router.route('/products/get')
-  .get((req, res)=>{
+  .get(authorization,(req, res)=>{
     console.log('get');
     getProduct()
     .then(result=> {
@@ -99,6 +100,11 @@ router.post("/add", function(req, res) {
       res.status(400).send(`Adding new product failed. Error details: ${err.message}`);
   });
 })
+
+// router.route('/addproducts')
+//     .post(authorization,(req,res) => {
+
+//     })
 
 //get Product by id details route
 router.get("/:product_id", function(req, res) {

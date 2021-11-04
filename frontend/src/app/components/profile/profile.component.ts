@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
 
   ColorProperty!: string;
   userid: any;
-  token: any;
+  token!: string;
   userForm = new FormGroup({
     username: new FormControl(),
     name: new FormControl(),
@@ -58,9 +58,11 @@ export class ProfileComponent implements OnInit {
           this.userid = data;
         },err => {
           console.log(err)
+          this.router.navigate(['/signin'])
         });
     }catch (error){
       console.log(error)
+      this.router.navigate(['/signin'])
     }
   }
 

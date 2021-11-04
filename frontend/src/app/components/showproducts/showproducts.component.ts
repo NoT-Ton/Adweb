@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router'
+import { LocalStorageService } from 'angular-web-storage';
 @Component({
   selector: 'app-showproducts',
   templateUrl: './showproducts.component.html',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router'
 })
 export class ShowproductsComponent implements OnInit {
 
+  userid: any;
+  token: any;
   Edit: boolean = false;
   products: any
   productForm = new FormGroup({
@@ -20,25 +23,26 @@ export class ShowproductsComponent implements OnInit {
 
   })
 
-  constructor(private ps: ProductsService,private router: Router) { this.onLoading() }
+  constructor(private ps: ProductsService,private router: Router,private local: LocalStorageService) { this.onLoading() }
 
   ngOnInit(): void {
   }
 
   onLoading(){
+    
     try {
-      this.ps.getProduct().subscribe(
+      this.token = this.local.get('user').token
+      this.ps.getProduct2(this.token).subscribe(
         data => {
-          this.products = data
-        },
-        err =>{
-          console.log(err);
-        })
-
-    }catch(error){
+          this.products = data;
+        },err => {
+          console.log(err)
+          this.router.navigate(['/signin'])
+        });
+    }catch (error){
       console.log(error)
+      this.router.navigate(['/signin'])
     }
-
   }
 
   onDelete(productID: String){
