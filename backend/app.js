@@ -36,6 +36,7 @@ app.use('/user', require('./routes/user'))
 app.use('/login', require('./routes/signin'))
 app.use('/api', require('./routes/products'))
 app.use('/wishlist', require('./routes/wishlist'))
+app.use('/comment', require('./routes/comment'))
 
 
 app.listen(3000, function() {
